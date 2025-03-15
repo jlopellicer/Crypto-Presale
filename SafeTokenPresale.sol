@@ -38,9 +38,10 @@ contract SafeTokenPresale {
         _;
     }
 
-    /// @notice Constructor of SafeeTokenPresale
+    /// @notice Constructor of SafeTokenPresale
     /// @param _token: Address of token this presale is being created for
     /// @param _goal: Amount of ETH to reach for sharing the tokens among investors
+    /// @param _uniswapRouter: Address of Uniswap Router to be used
     /// Events:
     ///     - After setting goal the event GoalStablished is emitted
     constructor(address _token, uint256 _goal, address _uniswapRouter) {
@@ -154,7 +155,7 @@ contract SafeTokenPresale {
     ///     - Goal must have been reached
     /// Events:
     ///     - When completed the event InvestingCompleted is emitted
-    function createPair() external payable {
+    function createPair() external {
         require(totalRaised >= goal, "Goal not reached yet");
         IUniswapV2Router02 uniswapV2Router = IUniswapV2Router02(uniswapRouter);
 
