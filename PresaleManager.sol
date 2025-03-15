@@ -15,6 +15,12 @@ contract PresaleManager is IPresaleManager {
 
     event PresaleCreated(address indexed presaleAddress, address indexed tokenAddress, uint256 goal);
 
+    /// @notice Constructor of PresaleManager
+    /// @param _uniswapRouter: Address of Uniswap Router to be used
+    constructor(address _uniswapRouter) {
+        uniswapRouter = _uniswapRouter;
+    }
+
     /// @notice This function creates a safe presale for a given token address and a given ETH goal
     /// @param _token: This is the token address the presale is created for
     /// @param _goal: The ETH goal to reach for this presale to be completed
